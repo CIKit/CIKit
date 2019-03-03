@@ -1,0 +1,16 @@
+{
+  "object": {
+    "pins": [
+      {
+        "package": "ProcedureKit",
+        "repositoryURL": "https://github.com/ProcedureKit/ProcedureKit",
+        "state": {
+          "branch": "development",
+          "revision": "9a3e93e8c0b53efed4bf3d4d3e5dcf045b720d7a",
+          "version": null
+        }
+      }
+    ]
+  },
+  "version": 1
+}
