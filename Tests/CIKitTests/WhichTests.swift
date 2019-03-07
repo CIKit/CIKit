@@ -16,4 +16,9 @@ final class WhichTest: ProcedureKitTestCase {
         wait(for: foo)
         PKAssertProcedureError(foo, ProcessProcedure.Error.didNotExitCleanly(1, Process.TerminationReason.exit))
     }
+    
+    static var allTests = [
+        ("test_which__with_existing_executable", test_which__with_existing_executable),
+        ("test_which__with_nonexisted_executable", test_which__with_nonexisted_executable)
+    ]
 }

@@ -43,9 +43,7 @@ public final class Git: GroupProcedure, OutputProcedure {
 
         let process = ProcessProcedure().injectResult(from: request)
         
-        // Read from the output pipe
-        let read = ReadPipe(pipe: outputPipe)
-        read.addDependency(process)
+        let read = ReadPipe(pipe: outputPipe).injectResult(from: process)
         
         super.init(operations: [which, request, process, read])
         
