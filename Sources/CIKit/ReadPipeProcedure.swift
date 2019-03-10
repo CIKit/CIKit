@@ -13,7 +13,7 @@ public final class ReadPipe: Procedure, OutputProcedure, InputProcedure {
     let encoding: String.Encoding
 
     private var data = Data()
-    private let queue = DispatchQueue(label: "read-data-from-pipe-queue")
+    private let queue = DispatchQueue.global(qos: .userInitiated)
 
     public var input: Pending<ProcessProcedure.TerminationResult> = .pending
     public var output: Pending<ProcedureResult<String>> = .pending
@@ -26,6 +26,9 @@ public final class ReadPipe: Procedure, OutputProcedure, InputProcedure {
             guard let this = self else { return }
             this.queue.async {
                 this.data.append(handler.availableData)
+                if handler.availableData.count > 0 {
+                    this.log.debug.message("Received \(handler.availableData.count) bytes.")
+                }
             }
         }
     }
